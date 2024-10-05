@@ -1,5 +1,6 @@
 import Image from "next/image";
 import MaxWidthWrapper from "../components/MaxWidthWrapper";
+import AuthButtons from "../components/AuthButtons";
 
 export default function Home() {
   return (
@@ -9,6 +10,10 @@ export default function Home() {
           Making Legal Documents Understandable for Everyone!
         </p>
       </div>
+      <div>
+      <h1>Welcome to the Application</h1>
+      <AuthButtons />  {/* Here is where the buttons will appear */}
+    </div>
     </MaxWidthWrapper>
   );
 }
