@@ -1,20 +1,25 @@
 "use client";
 import { withAuthInfo, useRedirectFunctions, useLogoutFunction, WithAuthInfoProps } from '@propelauth/react';
-import { useOnboardingCheck } from '@/components/hooks/useOnboarding'; // Adjust the import path as needed
+import { useRouter } from "next/navigation";
 
 const Dashboard = withAuthInfo((props: WithAuthInfoProps) => {
     const logoutFunction = useLogoutFunction();
     const { redirectToLoginPage } = useRedirectFunctions();
+    const router = useRouter();
 
     // Redirect if not logged in
     if (!props.isLoggedIn) {
         redirectToLoginPage();
         return null; // Prevent further rendering
     }
+   
 
-    // Use the onboarding check hook with the user object
-    useOnboardingCheck(props.isLoggedIn, props.user); // Pass the entire user object
 
+
+    // TODO MongoDB Onboarding
+    // else {
+    //     router.push('./onboarding');
+    // }
     return (
         <div>
             <p>{props.user.userId}</p>
