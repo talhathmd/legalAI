@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@kinde-oss/kinde-auth-nextjs": "^2.3.10",
     "@propelauth/nextjs": "^0.1.11",
     "@propelauth/react": "^2.0.22",
     "@radix-ui/react-slot": "^1.1.0",

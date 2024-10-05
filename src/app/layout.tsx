@@ -5,6 +5,7 @@ import { AuthProvider } from "@propelauth/react";
 import ServerLayout from "./server-layout";
 import ClientLayout from "./client-layout";
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar"; 
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,8 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <html lang="en" className="light">
+      <body className={cn("min-h-screen antialiased grainy", inter.className)}>
+        <Navbar />
     <ServerLayout>
       <ClientLayout>{children}</ClientLayout>
     </ServerLayout>
   );
 }
+
