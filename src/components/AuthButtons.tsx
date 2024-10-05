@@ -1,12 +1,35 @@
 "use client";
+import { useEffect } from "react";
 import { withAuthInfo, useRedirectFunctions, useLogoutFunction, WithAuthInfoProps } from "@propelauth/react";
 import { buttonVariants } from "@/components/ui/button"; // Assuming buttonVariants is in this file
 import Link from "next/link";
 import { ArrowRight } from "lucide-react"; // Using react-feather for the arrow icon
+//import { fetchUser } from "@/lib/actions/user.actions"; // Ensure the path is correct
+import { useRouter } from "next/navigation"; // Import useRouter
 
 const YourApp = withAuthInfo((props: WithAuthInfoProps) => {
   const logoutFunction = useLogoutFunction();
-  const { redirectToLoginPage, redirectToSignupPage, redirectToAccountPage } = useRedirectFunctions();
+  const { redirectToLoginPage, redirectToSignupPage } = useRedirectFunctions();
+  const router = useRouter(); // Initialize useRouter
+
+//   useEffect(() => {
+//     const checkOnboardingStatus = async () => {
+//       if (props.isLoggedIn && props.user) {
+//         try {
+//           const userInfo = await fetchUser(props.user.userId); // Fetch user info using userId
+//           if (!userInfo?.onboarded) {
+//             router.push("/onboarding"); // Redirect to onboarding if not onboarded
+//           } else {
+//             router.push("/dashboard"); // Redirect to dashboard if onboarded
+//           }
+//         } catch (error) {
+//           console.error("Error fetching user information:", error);
+//         }
+//       }
+//     };
+
+//     checkOnboardingStatus();
+//   }, [props.isLoggedIn, props.user, router]);
 
   if (props.isLoggedIn) {
     return (
@@ -16,7 +39,7 @@ const YourApp = withAuthInfo((props: WithAuthInfoProps) => {
             size: "sm",
             className: "mt-1",
           })}
-          onClick={() => redirectToAccountPage()}
+          onClick={() => router.push("/account")} // Navigate to account page
         >
           Account
         </button>
