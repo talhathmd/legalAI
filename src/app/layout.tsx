@@ -2,7 +2,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { cn } from "@/libs/utils";
 import { AuthProvider } from "@propelauth/react";
 import ServerLayout from "./server-layout";
 import ClientLayout from "./client-layout";

@@ -141,7 +141,6 @@ export default function Home() {
       <h1>Welcome to the Application</h1>
       <AuthButtons />  {/* Here is where the buttons will appear */}
     </div>
-    </MaxWidthWrapper>
     </>
   );
 }
