@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "20mb",
+    },
+    serverComponentsExternalPackages: ["mongoose"],
+  },
+};
 
 export default nextConfig;
