@@ -1,9 +1,9 @@
 import Image from "next/image";
 import MaxWidthWrapper from "../components/MaxWidthWrapper";
-import AuthButtons from "../components/AuthButtons";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import React from "react";
 
 export default function Home() {
   return (
@@ -137,10 +137,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
-      <h1>Welcome to the Application</h1>
-      <AuthButtons />  {/* Here is where the buttons will appear */}
-    </div>
+
     </>
   );
 }

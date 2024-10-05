@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,6 +24,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <AuthProvider authUrl={process.env.NEXT_PUBLIC_AUTH_URL}>
       <div className={cn("min-h-screen antialiased grainy", inter.className)}>
+        <Navbar />
         {children}
       </div>
     </AuthProvider>
