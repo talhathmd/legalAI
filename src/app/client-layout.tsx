@@ -1,12 +1,10 @@
+"use client";
 
+import { AuthProvider } from "@propelauth/react";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { cn } from "@/libs/utils";
-import { AuthProvider } from "@propelauth/react";
-import ServerLayout from "./server-layout";
-import ClientLayout from "./client-layout";
-import { cn } from "@/lib/utils";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,15 +19,12 @@ const geistMono = localFont({
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({ children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ServerLayout>
-      <ClientLayout>
+    <AuthProvider authUrl={process.env.NEXT_PUBLIC_AUTH_URL}>
+      <div className={cn("min-h-screen antialiased grainy", inter.className)}>
         {children}
-      </ClientLayout>
-    </ServerLayout>
+      </div>
+    </AuthProvider>
   );
 }
