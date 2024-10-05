@@ -19,10 +19,11 @@ const geistMono = localFont({
 });
 
 const inter = Inter({ subsets: ["latin"] });
+const authUrl = process.env.NEXT_PUBLIC_AUTH_URL || "https://localhost:3000";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
-    <AuthProvider authUrl={process.env.NEXT_PUBLIC_AUTH_URL}>
+    <AuthProvider authUrl={authUrl}>
       <div className={cn("min-h-screen antialiased grainy", inter.className)}>
         <Navbar />
         {children}
