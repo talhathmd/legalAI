@@ -6,6 +6,7 @@ import { cn } from "@/libs/utils";
 import { AuthProvider } from "@propelauth/react";
 import ServerLayout from "./server-layout";
 import ClientLayout from "./client-layout";
+import { cn } from "@/lib/utils";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
