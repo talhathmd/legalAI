@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation"; // Import useRouter
 
 const YourApp = withAuthInfo((props: WithAuthInfoProps) => {
   const logoutFunction = useLogoutFunction();
-  const { redirectToLoginPage, redirectToSignupPage } = useRedirectFunctions();
+  const { redirectToLoginPage, redirectToSignupPage, redirectToAccountPage } = useRedirectFunctions();
   const router = useRouter(); // Initialize useRouter
 
 //   useEffect(() => {
@@ -39,7 +39,7 @@ const YourApp = withAuthInfo((props: WithAuthInfoProps) => {
             size: "sm",
             className: "mt-1",
           })}
-          onClick={() => router.push("/account")} // Navigate to account page
+          onClick={() => redirectToAccountPage()} // Navigate to account page
         >
           Account
         </button>

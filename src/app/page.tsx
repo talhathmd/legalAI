@@ -126,9 +126,6 @@ export default function Home() {
                 ensure compliance and accuracy. Save time and reduce legal risks
                 instantly.
               </span>
-              <div>
-                <PdfRenderer />
-              </div>
             </div>
           </li>
         </ol>
