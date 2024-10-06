@@ -47,9 +47,9 @@ function WelcomeContent(props: WithAuthInfoProps) {
         {props.isLoggedIn && props.user ? (
           <div>
             <h1 className="text-2xl font-bold mb-4">Welcome to LegalAI!</h1>
-            {/* <p className="mb-6 text-gray-600">Your User ID: {props.user.userId}</p>
+            <p className="mb-6 text-gray-600">Your User ID: {props.user.userId}</p>
             <p className="mb-6 text-gray-600">Your Email: {props.user.email}</p>
-            <p className="mb-6 text-gray-600">Your Username: {props.user.username || "Not provided"}</p> */}
+            <p className="mb-6 text-gray-600">Your Username: {props.user.username || "Not provided"}</p>
             <button
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               onClick={handleStart}
