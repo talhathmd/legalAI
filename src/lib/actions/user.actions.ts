@@ -3,14 +3,14 @@ import User from "@/lib/models/user.model";
 
 interface Params {
   userId: string;
-  name: string;
-  email: string;
+  email: string; 
+  username: string;
 }
 
 export async function updateUser({
   userId,
-  name,
   email,
+  username,
 }: Params): Promise<void> {
   try {
     // Ensure DB connection
@@ -18,24 +18,24 @@ export async function updateUser({
 
     // Update user or create a new one if it doesn't exist
     await User.findOneAndUpdate(
-      { id: userId },
-      { name, email, onboarded: true },
-      { upsert: true, new: true }
+      { userId },  // Use userId as the identifier
+      { email, username },
+      { upsert: true, new: true } // 'new: true' returns the updated document
     );
 
-    console.log("User successfully updated/created");
+    // console.log("User successfully updated/created");
   } catch (error: any) {
     console.error("Failed to create/update user:", error.message);
     throw new Error(`Failed to create/update user: ${error.message}`);
   }
 }
 
-export async function fetchUser(userId: string) {
-  try {
-    connectToDB();
+// export async function fetchUser(userId: string) {
+//   try {
+//     await connectToDB();  // Ensure DB connection
 
-    return await User.findOne({ id: userId });
-  } catch (error: any) {
-    throw new Error(`Failed to fetch user: ${error.message}`);
-  }
-}
+//     return await User.findOne({ userId });  // Use userId to fetch user
+//   } catch (error: any) {
+//     throw new Error(`Failed to fetch user: ${error.message}`);
+//   }
+// }

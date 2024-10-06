@@ -4,6 +4,7 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: "20mb",
     },
+    esmExternals: "loose",
     serverComponentsExternalPackages: ["mongoose"],
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
