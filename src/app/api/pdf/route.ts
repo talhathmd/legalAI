@@ -39,13 +39,13 @@ export async function POST(req: Request) {
     }
 
     // Check if document is legal by looking for legal keywords
-    const legalKeywords = ["agreement", "contract", "liability", "terms", "termination", "confidentiality", "payment"];
-    const containsLegalTerms = legalKeywords.some(keyword => extractedText.toLowerCase().includes(keyword));
+    // const legalKeywords = ["agreement", "contract", "liability", "terms", "termination", "confidentiality", "payment"];
+    // const containsLegalTerms = legalKeywords.some(keyword => extractedText.toLowerCase().includes(keyword));
 
-    // If the document does not contain legal terms, return early with a specific message
-    if (!containsLegalTerms) {
-      return NextResponse.json({ summary: 'The document does not appear to be a legal document' }, { status: 400 });
-    }
+    // // If the document does not contain legal terms, return early with a specific message
+    // if (!containsLegalTerms) {
+    //   return NextResponse.json({ summary: 'The document does not appear to be a legal document' }, { status: 400 });
+    // }
 
     // Call OpenAI API to analyze and summarize only the required sections with specific metrics
     const completion = await openai.chat.completions.create({

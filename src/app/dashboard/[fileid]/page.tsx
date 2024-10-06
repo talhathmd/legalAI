@@ -40,13 +40,10 @@ const Page = async ({ params }: PageProps) => {
             {/* Pass the fileUrl to PdfRenderer */}
           </div>
         </div>
-
-        <div className="shrink-0 flex-[0.75] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0">
-          {/* TODO: You can add additional details or a sidebar here */}
         {/* Scrollable container for PdfSummary */}
         <div className="shrink-0 flex-[0.75] h-[calc(100vh-3.5rem)] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0">
           <div className="h-full">
-            <PdfSummary pdfUrl={file.url} />
+            <PdfSummary pdfUrl={report.fileUrl} />
           </div>
         </div>
       </div>
