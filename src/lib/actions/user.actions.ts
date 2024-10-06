@@ -3,13 +3,11 @@ import User from "@/lib/models/user.model";
 
 interface Params {
   userId: string;
-  name: string;
-  email: string;
+  email: string; 
 }
 
 export async function updateUser({
   userId,
-  name,
   email,
 }: Params): Promise<void> {
   try {
@@ -19,8 +17,8 @@ export async function updateUser({
     // Update user or create a new one if it doesn't exist
     await User.findOneAndUpdate(
       { id: userId },
-      { name, email, onboarded: true },
-      { upsert: true, new: true }
+      { email: true },
+      { upsert: true }
     );
 
     console.log("User successfully updated/created");
