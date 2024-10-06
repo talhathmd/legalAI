@@ -43,6 +43,7 @@ const UploadButton = (props: WithAuthInfoProps) => {
         alert("Upload successful!");
 
         const fileId = result[0].key; // Assuming result[0] contains the uploaded file and has a fileId
+        const fileUrl = result[0].url; // Assuming result[0] contains the uploaded file and has a fileUrl
 
         // Assuming summary is an empty string for now
         const summary = "";
@@ -52,7 +53,8 @@ const UploadButton = (props: WithAuthInfoProps) => {
           summary,
           author: userEmail || "unknown", // Use the user email as the author, default to "unknown" if undefined
           filename: files[0].name, // Filename of the uploaded file
-          fileUrl: fileId, // The uploaded file's key from UploadThing
+          fileUrl: fileUrl, // The uploaded file's key from UploadThing
+          fileId,
         });
 
         // Push to the new route using the fileId, only if the component is mounted

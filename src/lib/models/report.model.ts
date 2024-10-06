@@ -14,6 +14,10 @@ const reportSchema = new mongoose.Schema({
   fileUrl: {
     type: String,
   },
+  fileId: {
+    type: String,
+    required: false,
+  },
 });
 
 const Report = mongoose.models.Report || mongoose.model("Report", reportSchema);

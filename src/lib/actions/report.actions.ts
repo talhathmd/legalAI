@@ -11,6 +11,7 @@ interface Params {
   author: string;
   filename: string;
   fileUrl: string;
+  fileId: string;
 }
 
 export async function createReport({
@@ -18,6 +19,7 @@ export async function createReport({
   author,
   filename,
   fileUrl,
+  fileId,
 }: Params) {
   try {
     connectToDB();
@@ -27,6 +29,7 @@ export async function createReport({
       author,
       filename,
       fileUrl,
+      fileId,
     });
 
     await User.findOneAndUpdate(
