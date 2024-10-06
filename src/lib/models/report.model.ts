@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 const reportSchema = new mongoose.Schema({
   summary: {
@@ -6,9 +7,8 @@ const reportSchema = new mongoose.Schema({
     required: false,
   },
   author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    type: String,
+    required: false,
   },
   filename: { type: String, required: false },
   fileUrl: {

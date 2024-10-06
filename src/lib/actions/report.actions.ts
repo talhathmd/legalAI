@@ -29,9 +29,12 @@ export async function createReport({
       fileUrl,
     });
 
-    await User.findByIdAndUpdate(author, {
-      $push: { reports: createdReport._id },
-    });
+    await User.findOneAndUpdate(
+      { email: author },
+      {
+        $push: { reports: createdReport._id },
+      }
+    );
   } catch (error: any) {
     console.error(`Error creating report: ${error}`);
   }
