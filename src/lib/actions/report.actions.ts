@@ -43,6 +43,28 @@ export async function createReport({
   }
 }
 
+export async function fetchReport(fileId: string) {
+  try {
+    // Connect to the database
+    await connectToDB();
+
+    // Find the report by fileId instead of _id
+    const report = await Report.findOne({ fileId: fileId });
+
+    // If no report is found, throw an error
+    if (!report) {
+      throw new Error("Report not found");
+    }
+
+    // Return the report data
+    return report;
+  } catch (error: any) {
+    console.error(`Error fetching report: ${error}`);
+    throw new Error("Error fetching report");
+  }
+}
+
+// Also, make sure fetchAllReportIds is exported
 export async function fetchAllReportIds() {
   try {
     // Connect to the database
@@ -58,5 +80,3 @@ export async function fetchAllReportIds() {
     throw new Error("Error fetching report IDs");
   }
 }
-
-
