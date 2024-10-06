@@ -4,13 +4,17 @@ import { useState, useEffect } from "react";
 import { useUploadThing } from "@/lib/uploadthing";
 import Dropzone from "react-dropzone";
 import { useRouter } from "next/navigation"; // Import useRouter from Next.js
+import { withAuthInfo, WithAuthInfoProps } from "@propelauth/react";
+import { createReport } from "@/lib/actions/report.actions";
 
-const UploadButton = () => {
+const UploadButton = (props: WithAuthInfoProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload, isUploading } = useUploadThing("fileUploader");
   const [isMounted, setIsMounted] = useState(false); // Track if the component is mounted
   const router = useRouter(); // Initialize useRouter hook
+
+  const userEmail = props.user?.email; // Get the user's email from the props
 
   // Ensure the component is mounted in the browser
   useEffect(() => {
@@ -34,10 +38,23 @@ const UploadButton = () => {
       const result = await startUpload(files);
 
       if (result && result.length > 0) {
-        console.log("Files successfully uploaded:", result);
+        console.log("Files successfully uploaded:", result[0]);
         alert("Upload successful!");
 
         const fileId = result[0].key; // Assuming result[0] contains the uploaded file and has a fileId
+        const fileUrl = result[0].url; // Assuming result[0] contains the uploaded file and has a fileUrl
+
+        // Assuming summary is an empty string for now
+        const summary = "";
+
+        // Call createReport to store the report in MongoDB
+        await createReport({
+          summary,
+          author: userEmail || "unknown", // Use the user email as the author, default to "unknown" if undefined
+          filename: files[0].name, // Filename of the uploaded file
+          fileUrl: fileUrl, // The uploaded file's key from UploadThing
+          fileId,
+        });
 
         // Push to the new route using the fileId, only if the component is mounted
         if (isMounted) {
@@ -111,4 +128,5 @@ const UploadButton = () => {
   );
 };
 
-export default UploadButton;
+// Wrap UploadButton with withAuthInfo
+export default withAuthInfo(UploadButton);

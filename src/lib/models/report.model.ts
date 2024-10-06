@@ -1,18 +1,22 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 const reportSchema = new mongoose.Schema({
   summary: {
     type: String,
-    required: true,
+    required: false,
   },
   author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    type: String,
+    required: false,
   },
-  filename: { type: String, required: true },
+  filename: { type: String, required: false },
   fileUrl: {
     type: String,
+  },
+  fileId: {
+    type: String,
+    required: false,
   },
 });
 
