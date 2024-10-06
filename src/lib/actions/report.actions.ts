@@ -1,10 +1,7 @@
 "use server";
 import { connectToDB } from "../mongoose";
 import Report from "../models/report.model";
-import { revalidatePath } from "next/cache";
 import User from "../models/user.model";
-import { model } from "mongoose";
-import mongoose from "mongoose";
 
 interface Params {
   summary: string;
@@ -33,13 +30,15 @@ export async function createReport({
     });
 
     await User.findOneAndUpdate(
-      { email: author },
+      { email: author }, // Find the user by email
       {
-        $push: { reports: createdReport._id },
-      }
+        $push: { reports: createdReport.fileId }, // Push the report's fileId to the user's reports array
+      },
+      { new: true } // Return the updated user document
     );
   } catch (error: any) {
-    console.error(`Error creating report: ${error}`);
+    console.error(`Error creating report: ${error.message}`);
+    throw new Error("Error creating report");
   }
 }
 

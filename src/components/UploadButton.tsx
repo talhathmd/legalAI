@@ -15,7 +15,6 @@ const UploadButton = (props: WithAuthInfoProps) => {
   const router = useRouter(); // Initialize useRouter hook
 
   const userEmail = props.user?.email; // Get the user's email from the props
-  console.log("User email:", userEmail);
 
   // Ensure the component is mounted in the browser
   useEffect(() => {
