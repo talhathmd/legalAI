@@ -1,27 +1,22 @@
-import { UploadDropzone } from "@uploadthing/react"
-import { Button } from "./ui/button"
-import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
-import { useState } from "react"
-import Dropzone from "react-dropzone"
+import { UploadDropzone } from "@uploadthing/react";
+import { Button } from "./ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
+import { useState } from "react";
+import Dropzone from "react-dropzone";
 
-const UploadButton = ({
-    isSubscribed,
-  }: {
-    isSubscribed: boolean
-  }) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false)
+const UploadButton = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-return (
+  return (
     <Dialog
       open={isOpen}
       onOpenChange={(v) => {
         if (!v) {
-          setIsOpen(v)
+          setIsOpen(v);
         }
-      }}>
-      <DialogTrigger
-        onClick={() => setIsOpen(true)}
-        asChild>
+      }}
+    >
+      <DialogTrigger onClick={() => setIsOpen(true)} asChild>
         <Button>Upload PDF</Button>
       </DialogTrigger>
 
@@ -29,7 +24,7 @@ return (
         {/* <UploadDropzone isSubscribed={isSubscribed} /> */}
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};
 
-export default UploadButton
+export default UploadButton;
