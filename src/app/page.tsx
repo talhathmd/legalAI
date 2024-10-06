@@ -57,7 +57,14 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="mt-16 flow-root sm:mt-24">
             <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-              {/* TODO: Image for Dashboard (SS) */}
+              <Image
+                src="/assets/dashboard.png"
+                alt="product preview"
+                width={1364}
+                height={866}
+                quality={100}
+                className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
+              />
             </div>
           </div>
         </div>
@@ -97,9 +104,9 @@ export default function Home() {
               <span className="text-sm font-medium text-blue-600">Step 1</span>
               <span className="text-xl font-semibold">Sign up for LegalAI</span>
               <span className="mt-2 text-zinc-700">
-                {/* TODO: mention auth with propel  */}
-                Sign up easily and start analyzing your legal documents right
-                away.
+                Sign up easily with{" "}
+                <span className="font-bold">PropelAuth</span> and start
+                analyzing your legal documents right away.
               </span>
             </div>
           </li>
@@ -133,7 +140,14 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="mt-16 flow-root sm:mt-24">
             <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-              {/* TODO: Image for File Upload */}
+              <Image
+                src="/assets/file-upload.png"
+                alt="product preview"
+                width={1419}
+                height={732}
+                quality={100}
+                className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
+              />
             </div>
           </div>
         </div>
