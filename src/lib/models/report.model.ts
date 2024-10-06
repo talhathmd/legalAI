@@ -10,6 +10,7 @@ const reportSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  filename: { type: String, required: true },
   fileUrl: {
     type: String,
   },
