@@ -3,7 +3,7 @@ import User from "@/lib/models/user.model";
 
 interface Params {
   userId: string;
-  email: string; 
+  email: string;
   username: string;
 }
 
@@ -18,7 +18,7 @@ export async function updateUser({
 
     // Update user or create a new one if it doesn't exist
     await User.findOneAndUpdate(
-      { userId },  // Use userId as the identifier
+      { userId }, // Use userId as the identifier
       { email, username },
       { upsert: true, new: true } // 'new: true' returns the updated document
     );
@@ -29,13 +29,3 @@ export async function updateUser({
     throw new Error(`Failed to create/update user: ${error.message}`);
   }
 }
-
-// export async function fetchUser(userId: string) {
-//   try {
-//     await connectToDB();  // Ensure DB connection
-
-//     return await User.findOne({ userId });  // Use userId to fetch user
-//   } catch (error: any) {
-//     throw new Error(`Failed to fetch user: ${error.message}`);
-//   }
-// }
