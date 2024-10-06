@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import {Loader2} from 'lucide-react'
 
 interface PdfSummaryProps {
   pdfUrl: string; // Accepting the PDF URL as a prop
@@ -88,11 +89,18 @@ const PdfSummary: React.FC<PdfSummaryProps> = ({ pdfUrl }) => {
       {/* Button at the bottom */}
       <div className="p-4 border-t">
         <button
-          className="w-full bg-zinc-900 text-white p-2 rounded"
+          className={`w-full p-2 rounded ${loading ? "bg-gray-400" : "bg-zinc-900 text-white"}`}
           onClick={handleSubmit}
           disabled={loading}
         >
-          {loading ? "Analyzing..." : "Analyze"}
+          {loading ? (
+            <div className="flex items-center justify-center">
+              <Loader2 className="animate-spin" />
+              Analyzing...
+            </div>
+          ) : (
+            "Analyze"
+          )}
         </button>
       </div>
     </div>
