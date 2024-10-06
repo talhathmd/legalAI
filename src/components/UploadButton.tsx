@@ -27,6 +27,7 @@ const UploadButton = () => {
         console.log("Files successfully uploaded:", result);
         alert("Upload successful!");
         setFiles([]); // Clear the files after successful upload
+        setIsOpen(false); // Close the dialog after a successful upload
       }
     } catch (error) {
       console.error("Error uploading files:", error);
