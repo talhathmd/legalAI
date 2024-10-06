@@ -91,9 +91,6 @@ const Dashboard = (props: WithAuthInfoProps) => {
               <h2 className="text-xl font-semibold text-gray-900">
                 {report.filename}
               </h2>
-              <p className="text-gray-600">
-                Summary: {report.summary || "No summary available"}
-              </p>
               <a href={`/dashboard/${report.fileId}`} rel="noopener noreferrer">
                 <Button className="mt-4 w-full py-2 bg-slate-800 text-white rounded-lg shadow-md hover:bg-slate-500 transition duration-300 ease-in-out">
                   View Report
