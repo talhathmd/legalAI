@@ -53,14 +53,13 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: `You are an assistant analyzing legal documents. Provide specific metrics (Dates, Amount, Percentages, etc..) related to important terms and give suggestions on potential issues.`
+          content: `You are an lawyer analyzing legal documents. Provide specific metrics (Dates, Amount, Percentages, etc..) related to important terms and give suggestions on things to look after. Explain in easy terms, Be specific, highlight critical terms (e.g., liabilities, penalties, payment period, termination notice), and flag any potential issues.`
         },
         {
           role: "user",
           content: `
           The following is the extracted text from a legal document. Summarize the key points by focusing only on the following sections:
-          Summary:
-          1. Clarity and Accuracy of Terms
+          1. Overall Summary
           2. Liabilities and Risks
           3. Termination Clauses
           4. Payment Terms
@@ -69,7 +68,7 @@ export async function POST(req: Request) {
           7. Obligations and Responsibilities
           8. Warranties and Guarantees
 
-          Explain in easy terms, Be specific, highlight critical terms (e.g., liabilities, penalties, payment period, termination notice), and flag any potential issues. At the end, provide a suggestion on whether the document's terms are satisfactory or need revision.
+          At the end, provide a short suggestion on whether the document's terms are satisfactory or need revision.
 
           Extracted text: ${extractedText}`
         }
