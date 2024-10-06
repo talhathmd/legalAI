@@ -24,12 +24,12 @@ function WelcomeContent(props: WithAuthInfoProps) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: props.user?.userId,  // Make sure this field exists
-          username: props.user?.username || "DefaultUsername",  // Use a fallback for username if not present
-          email: props.user?.email,  // Use email from the user object
+          userId: props.user?.userId, // Make sure this field exists
+          username: props.user?.username || "DefaultUsername", // Use a fallback for username if not present
+          email: props.user?.email, // Use email from the user object
         }),
       });
-  
+
       const responseData = await response.json();
       if (response.ok) {
         console.log("User successfully added or updated:", responseData);
@@ -42,12 +42,11 @@ function WelcomeContent(props: WithAuthInfoProps) {
     router.push("/dashboard");
   };
 
-    function handleLogin(): void {
-        router.push("/")
-    }
+  function handleLogin(): void {
+    router.push("/");
+  }
 
   return (
-
     <>
       <div className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">
         <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
@@ -60,11 +59,12 @@ function WelcomeContent(props: WithAuthInfoProps) {
         </h1>
 
         <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
-          Your AI-powered legal assistant is here to simplify contract review and analysis. Start reviewing smarter today!
+          Your AI-powered legal assistant is here to simplify contract review
+          and analysis. Start reviewing smarter today!
         </p>
 
         <button
-          className="mt-5 w-200 py-3 px-6 bg-blue-700 text-white rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-600 hover:shadow-blue-400 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center"
+          className="mt-5 w-200 py-3 px-6 bg-zinc-900 text-white rounded-lg text-lg font-semibold shadow-lg hover:bg-zinc-800 hover:shadow-blue-400 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center"
           onClick={handleStart}
         >
           Get Started <ArrowRight className="ml-2 h-5 w-5" />

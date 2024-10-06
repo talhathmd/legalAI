@@ -14,15 +14,24 @@ const PdfSummary: React.FC<PdfSummaryProps> = ({ pdfUrl }) => {
 
   const formatSummary = (summary: string) => {
     // Replace **text** with <strong>text</strong> and add custom color and bold class
-    let formatted = summary.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-blue-600">$1</strong>');
-    
+    let formatted = summary.replace(
+      /\*\*(.*?)\*\*/g,
+      '<strong class="font-bold text-blue-600">$1</strong>'
+    );
+
     // Replace ### text with <h3>text</h3> and add custom color for the heading
-    formatted = formatted.replace(/### (.*?)(?=\n|$)/g, '<h3 class="text-lg font-semibold text-indigo-600">$1</h3>');
-    
+    formatted = formatted.replace(
+      /### (.*?)(?=\n|$)/g,
+      '<h3 class="text-lg font-semibold text-indigo-600">$1</h3>'
+    );
+
     // Replace - text with <li>text</li> and wrap in <ul>
-    formatted = formatted.replace(/- (.*?)(?=\n|$)/g, '<li>$1</li>');
-    formatted = formatted.replace(/(<li>.*?<\/li>)/g, '<ul class="list-disc pl-5">$1</ul>'); // Wrap in <ul>
-    
+    formatted = formatted.replace(/- (.*?)(?=\n|$)/g, "<li>$1</li>");
+    formatted = formatted.replace(
+      /(<li>.*?<\/li>)/g,
+      '<ul class="list-disc pl-5">$1</ul>'
+    ); // Wrap in <ul>
+
     return formatted;
   };
 
@@ -60,7 +69,9 @@ const PdfSummary: React.FC<PdfSummaryProps> = ({ pdfUrl }) => {
         {summary ? (
           <div>
             {/* Main Summary Title with custom color */}
-            <h2 className="text-2xl font-bold text-purple-700 mb-2">Summary:</h2>
+            <h2 className="text-2xl font-bold text-purple-700 mb-2">
+              Summary:
+            </h2>
             <div
               className="mt-2 whitespace-pre-wrap leading-relaxed text-gray-800"
               dangerouslySetInnerHTML={{ __html: formattedSummary }}
@@ -71,17 +82,13 @@ const PdfSummary: React.FC<PdfSummaryProps> = ({ pdfUrl }) => {
             <p>No summary available yet.</p>
           </div>
         )}
-        {error && (
-          <div className="mt-4 text-red-600">
-            {error}
-          </div>
-        )}
+        {error && <div className="mt-4 text-red-600">{error}</div>}
       </div>
 
       {/* Button at the bottom */}
       <div className="p-4 border-t">
         <button
-          className="w-full bg-blue-600 text-white p-2 rounded"
+          className="w-full bg-zinc-900 text-white p-2 rounded"
           onClick={handleSubmit}
           disabled={loading}
         >
