@@ -30,25 +30,27 @@ const Page = async ({ params }: PageProps) => {
   }
 
   return (
-    <div className="flex-1 justify-between flex flex-col h-[calc(100vh-3.5rem)]">
+    <div className="flex flex-1 h-[calc(100vh-3.5rem)]">
       <div className="mx-auto w-full max-w-8xl grow lg:flex xl:px-2">
         {/* Left sidebar & main wrapper */}
         <div className="flex-1 xl:flex">
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6 flex flex-col">
             {/* Main area */}
-            <PdfRenderer url={report.fileUrl} />{" "}
-            {/* Pass the fileUrl to PdfRenderer */}
+            <div className="flex-1 h-full overflow-hidden">
+              <PdfRenderer url={report.fileUrl} /> {/* Pass the fileUrl to PdfRenderer */}
+            </div>
           </div>
         </div>
         {/* Scrollable container for PdfSummary */}
-        <div className="shrink-0 flex-[0.75] h-[calc(100vh-3.5rem)] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0">
-          <div className="h-full">
+        <div className="shrink-0 flex-[0.75] h-full border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0">
+          <div className="h-full flex flex-col">
             <PdfSummary pdfUrl={report.fileUrl} />
           </div>
         </div>
       </div>
     </div>
   );
+  
 };
 
 export default Page;
