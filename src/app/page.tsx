@@ -33,7 +33,7 @@ export default function Home() {
             size: "lg",
             className: "mt-5",
           })}
-          href="#"
+          href="/dashboard"
         >
           Get started <ArrowRight className="ml-2 h-5 w-5" />
         </Link>
@@ -126,9 +126,6 @@ export default function Home() {
                 ensure compliance and accuracy. Save time and reduce legal risks
                 instantly.
               </span>
-              <div>
-                <PdfRenderer />
-              </div>
             </div>
           </li>
         </ol>

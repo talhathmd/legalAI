@@ -10,6 +10,7 @@ export const POST = async (req: NextRequest) => {
     // Log the incoming data for debugging
     console.log("Incoming data: ", { userId, username, email });
 
+    // Check if userId and email are provided
     if (!userId || !email) {
       console.error("User ID or email missing.");
       return NextResponse.json({ error: "User ID and email are required" }, { status: 400 });
@@ -17,13 +18,14 @@ export const POST = async (req: NextRequest) => {
 
     await connectToDB();
 
-    // Check if the user already exists
+    // Check if the user already exists based on email
     const existingUser = await User.findOne({ email });
     console.log("Existing user: ", existingUser);
 
     if (!existingUser) {
       // Create a new user if they don't exist
       await User.create({
+        userId, // Ensure userId is present here
         username: username || userId, // If no username, fall back to userId
         email,
       });

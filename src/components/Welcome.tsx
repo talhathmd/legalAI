@@ -38,6 +38,7 @@ function WelcomeContent(props: WithAuthInfoProps) {
     } catch (error) {
       console.error("Error sending request:", error);
     }
+    router.push("/dashboard");
   };
 
   return (

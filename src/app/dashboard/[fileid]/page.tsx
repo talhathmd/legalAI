@@ -1,3 +1,4 @@
+import PdfSummary from "@/components/PdfSummary";
 import PdfRenderer from "@/components/PdfRenderer";
 import { fetchReport } from "@/lib/actions/report.actions"; // Import your fetchReport function
 
@@ -42,6 +43,11 @@ const Page = async ({ params }: PageProps) => {
 
         <div className="shrink-0 flex-[0.75] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0">
           {/* TODO: You can add additional details or a sidebar here */}
+        {/* Scrollable container for PdfSummary */}
+        <div className="shrink-0 flex-[0.75] h-[calc(100vh-3.5rem)] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0">
+          <div className="h-full">
+            <PdfSummary pdfUrl={file.url} />
+          </div>
         </div>
       </div>
     </div>
