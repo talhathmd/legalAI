@@ -4,6 +4,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import React from "react";
+import PdfRenderer from "@/components/PdfRenderer";
 
 export default function Home() {
   return (
@@ -125,6 +126,9 @@ export default function Home() {
                 ensure compliance and accuracy. Save time and reduce legal risks
                 instantly.
               </span>
+              <div>
+                <PdfRenderer />
+              </div>
             </div>
           </li>
         </ol>
