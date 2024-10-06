@@ -1,13 +1,23 @@
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUploadThing } from "@/lib/uploadthing";
 import Dropzone from "react-dropzone";
+import { useRouter } from "next/navigation"; // Import useRouter from Next.js
 
 const UploadButton = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload, isUploading } = useUploadThing("fileUploader");
+  const [isMounted, setIsMounted] = useState(false); // Track if the component is mounted
+  const router = useRouter(); // Initialize useRouter hook
+
+  // Ensure the component is mounted in the browser
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMounted(true); // Only set isMounted to true in the client-side
+    }
+  }, []);
 
   // Handle files dropped or selected in the dropzone
   const handleDrop = (acceptedFiles: File[]) => {
@@ -23,9 +33,17 @@ const UploadButton = () => {
     try {
       const result = await startUpload(files);
 
-      if (result) {
+      if (result && result.length > 0) {
         console.log("Files successfully uploaded:", result);
         alert("Upload successful!");
+
+        const fileId = result[0].key; // Assuming result[0] contains the uploaded file and has a fileId
+
+        // Push to the new route using the fileId, only if the component is mounted
+        if (isMounted) {
+          router.push(`/dashboard/${fileId}`);
+        }
+
         setFiles([]); // Clear the files after successful upload
         setIsOpen(false); // Close the dialog after a successful upload
       }
